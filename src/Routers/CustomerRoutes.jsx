@@ -6,6 +6,7 @@ import Contact from "../Pages/Contact";
 import TearmsCondition from "../Pages/TearmsCondition";
 import PrivacyPolicy from "../Pages/PrivacyPolicy";
 import About from "../Pages/About";
+import Shop from "../Pages/Shop";
 import Homepage from "../Pages/Homepage";
 import Navigation from "../customer/Components/Navbar/Navigation";
 import Cart from "../customer/Components/Cart/Cart";
@@ -39,6 +40,7 @@ const CustomerRoutes = () => {
         <Route path="/" element={<Homepage />}></Route>
         <Route path="/home" element={<Homepage />}></Route>
         <Route path="/about" element={<About />}></Route>
+        <Route path="/shop" element={<Shop />}></Route>
         <Route path="/privaciy-policy" element={<PrivacyPolicy />}></Route>
         <Route path="/terms-condition" element={<TearmsCondition />}></Route>
         <Route path="/contact" element={<Contact />}></Route>

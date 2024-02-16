@@ -5,6 +5,7 @@ import {
   MagnifyingGlassIcon,
   ShoppingBagIcon,
   XMarkIcon,
+  UserIcon
 } from "@heroicons/react/24/outline";
 
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -15,6 +16,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { deepPurple } from "@mui/material/colors";
 import { getUser, logout } from "../../../Redux/Auth/Action";
 import { getCart } from "../../../Redux/Customers/Cart/Action";
+import logo from './logo.png';
+
+
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -30,6 +34,12 @@ export default function Navigation() {
   const openUserMenu = Boolean(anchorEl);
   const jwt = localStorage.getItem("jwt");
   const location=useLocation();
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+
+  const handleSearchClick = () => {
+    setIsSearchOpen(!isSearchOpen);
+  };
+  
 
   useEffect(() => {
     if (jwt) {
@@ -220,24 +230,15 @@ export default function Navigation() {
                       href="/"
                       className="-m-2 block p-2 font-medium text-gray-900"
                     >
-                      Sign in
+                      <UserIcon
+                      className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
+                      aria-hidden="true"
+                    />
                     </a>
                   </div>
                 </div>
 
-                <div className="border-t border-gray-200 px-4 py-6">
-                  <a href="/" className="-m-2 flex items-center p-2">
-                    <img
-                      src="https://tailwindui.com/img/flags/flag-canada.svg"
-                      alt=""
-                      className="block h-auto w-5 flex-shrink-0"
-                    />
-                    <span className="ml-3 block text-base font-medium text-gray-900">
-                      CAD
-                    </span>
-                    <span className="sr-only">, change currency</span>
-                  </a>
-                </div>
+               
               </Dialog.Panel>
             </Transition.Child>
           </div>
@@ -246,7 +247,7 @@ export default function Navigation() {
 
       <header className="relative bg-white">
         <p className="flex h-10 items-center justify-center bg-indigo-600 px-4 text-sm font-medium text-white sm:px-6 lg:px-8">
-          Get free delivery on orders over $100
+          Get Price Tracking of Products!
         </p>
 
         <nav aria-label="Top" className="mx-auto">
@@ -264,11 +265,11 @@ export default function Navigation() {
               {/* Logo */}
               <div className="ml-4 flex lg:ml-0">
                 <Link to="/">
-                  <span className="sr-only">Your Company</span>
+                  <span className="sr-only">Flizon</span>
                   <img
-                    src="https://res.cloudinary.com/ddkso1wxi/image/upload/v1675919455/Logo/Copy_of_Zosh_Academy_nblljp.png"
-                    alt="Shopwithzosh"
-                    className="h-8 w-8 mr-2"
+                    src={logo}
+                    alt="ShopwithFlizon"
+                    className="h-12 w-14 mr-1"
                   />
                 </Link>
               </div>
@@ -276,6 +277,7 @@ export default function Navigation() {
               {/* Flyout menus */}
               <Popover.Group className="hidden lg:ml-8 lg:block lg:self-stretch z-10">
                 <div className="flex h-full space-x-8">
+                
                   {navigation.categories.map((category) => (
                     <Popover key={category.name} className="flex">
                       {({ open, close }) => (
@@ -455,13 +457,16 @@ export default function Navigation() {
                       onClick={handleOpen}
                       className="text-sm font-medium text-gray-700 hover:text-gray-800"
                     >
-                      Signin
+                       <UserIcon
+                      className="h-6 w-6"
+                      aria-hidden="true"
+                    />
                     </Button>
                   )}
                 </div>
 
                 {/* Search */}
-                <div className="flex lg:ml-6">
+                {/* <div className="flex lg:ml-6">
                   <p className="p-2 text-gray-400 hover:text-gray-500">
                     <span className="sr-only">Search</span>
                     <MagnifyingGlassIcon
@@ -469,7 +474,25 @@ export default function Navigation() {
                       aria-hidden="true"
                     />
                   </p>
-                </div>
+                </div> */}
+                 <div className="flex lg:ml-6">
+                {/* Search icon */}
+                <p
+                  className="p-2 text-gray-400 hover:text-gray-500 cursor-pointer"
+                  onClick={handleSearchClick}
+                >
+                  <span className="sr-only">Search</span>
+                  <MagnifyingGlassIcon className="h-6 w-6" aria-hidden="true" />
+                </p>
+                {/* Search input field */}
+                {isSearchOpen && (
+                  <input
+                    type="text"
+                    placeholder="Search..."
+                    className="p-2 border border-gray-300 rounded-md focus:outline-none"
+                  />
+                )}
+              </div>
 
                 {/* Cart */}
                 <div className="ml-4 flow-root lg:ml-6">
