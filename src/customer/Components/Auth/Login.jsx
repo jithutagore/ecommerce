@@ -64,7 +64,15 @@ export default function LoginUserForm({ handleNext }) {
               type="password"
             />
           </Grid>
-
+          <div className="flex justify-center flex-col items-center">
+         <div className="py-3 flex items-center">
+        <p className="m-0 p-0 ml-20" >Forgot Password?</p>
+        {/* todo: login forgot pswd */}
+        <Button className="ml-5" size="small">
+          Click Here
+        </Button>
+        </div>
+      </div>
           <Grid item xs={12}>
             <Button
               className="bg-[#9155FD] w-full"
