@@ -64,9 +64,9 @@ export default function LoginUserForm({ handleNext }) {
               type="password"
             />
           </Grid>
-          <div className="flex justify-center flex-col items-center">
-         <div className="py-3 flex items-center">
-        <p className="m-0 p-0 ml-20" >Forgot Password?</p>
+          <div className="flex justify-center flex-col items-center ml-3">
+         <div className="py-3 flex items-center ml-20">
+        <p className="m-0 p-0 ml-10" >Forgot Password?</p>
         {/* todo: login forgot pswd */}
         <Button className="ml-5" size="small">
           Click Here
@@ -88,7 +88,7 @@ export default function LoginUserForm({ handleNext }) {
       </form>
       <div className="flex justify-center flex-col items-center">
          <div className="py-3 flex items-center">
-        <p className="m-0 p-0">don't have account ?</p>
+        <p className="m-0 p-0">don't have account?</p>
         <Button onClick={()=> navigate("/register")} className="ml-5" size="small">
           Register
         </Button>
